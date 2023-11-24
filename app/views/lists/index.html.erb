@@ -1,12 +1,9 @@
-<h1>List of lists</h1>
-
-<ul><% @lists.each do |list|%>
-<li><%= link_to list.name, lists_path(list.id) %></li>
-<%= cl_image_tag("jdzyg30eg3azgwqc0qbm",
-      width: 400, height: 300, crop: :fill) %>
-
-<!-- for face detection -->
-<%= cl_image_tag("bhjvijs3cqbupu7by3q5",
-      width: 150, height: 150, crop: :thumb, gravity: :face) %>
+<% @lists.each do | list | %>
+  <%= list.name %>
+  <% list.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
+    <% end %>
+  <br>
+  <%= link_to "Have a look a this list", list_path(list) %>
+  <br>
 <% end %>
-</ul>
